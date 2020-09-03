@@ -9,11 +9,13 @@ from google.auth.transport.requests import Request
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # The ID and range of a sample spreadsheet.
-SAMPLE_SPREADSHEET_ID = ''
+SAMPLE_SPREADSHEET_ID = '1FynqovpaasZg7s0zgAonLRhH_r0DggbHodjBryvVuuU'
 SAMPLE_RANGE_NAME = 'Sheet1'
 
-def main():
-
+def pullSubList():
+    """Shows basic usage of the Sheets API.
+    Prints values from a sample spreadsheet.
+    """
     creds = None
     # The file token.pickle stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
@@ -44,10 +46,7 @@ def main():
     if not values:
         print('No data found.')
     else:
-        
+        subList = []
         for row in values:
-            # Print columns A and E, which correspond to indices 0 and 4.
-            print('%s, %s' % (row[0], row[4]))
-
-if __name__ == '__main__':
-    main()
+            subList.append(row[0])
+        return subList
