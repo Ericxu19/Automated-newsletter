@@ -42,7 +42,7 @@ def pullLinks():
                 if dic['value'] == "link"+ "8":
                     links.append(m['snippet'])
                 if dic['value'] == "intro"+ "8":
-                    intro= "For this month, we start with Justin Stein's analysis of how Wall Street is oblivious to what is happening on Main street, continues with environmental consultants' Racheal Fleishaiman's pled to society that future environmental policy is guided by the mistakes we have made in combating COVID 19, then continues to Judith Langer's sobering portrait of the predictable yet heartbreaking increase of abuse and violence during pandemic lockdowns, and concludes with John Willis' recounting of the indignities he suffered as a blind person trying to get a COVID test recently in Toronto."
+                    intro= ""
 
                     
     return [intro, links]

@@ -40,9 +40,9 @@ driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, options=options)
 # Store chapter info
 
 
-def download(url):  
+def download(url, name):  
     print("fetching with url " + f" {url} ")
-
+    
     try:
 
         driver.get(url)
@@ -57,9 +57,16 @@ def download(url):
         
         blog = soup.find("div", {"class": "blog-item-inner-wrapper"}) 
         if blog:
+            b= []
+            b.append(soup.find("div", {"class": "blog-item-title"}).text )
+            b.append(soup.find("h4").text)
+            b.append(blog)
+            name.append(b)
+            """
             with open("out.html", "ab") as f:
                 f.write(blog.encode())
-
+                f.write('<hr style="height:2px;border:none;color:#333;background-color:#333;">'.encode())
+    """   
     except Exception as e:
         print(Back.RED + f" Failed Writing!!  {e} ")
         driver.quit()
@@ -71,7 +78,7 @@ def pullBlog():
 
     # Load JSON from API
     
-    
+    name = []
 
     try: 
         for i in range(32):
@@ -80,11 +87,11 @@ def pullBlog():
              
 
              # Download each file as html
-            download(url)
+            download(url, name)
             
              
 
     finally:
         # Close the browser after download
         driver.quit()
-    pdfkit.from_file('out.html', 'out.pdf')
+    return name
